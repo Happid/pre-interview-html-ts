@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hoisting</title>
+</head>
+<body>
+    <h2>Hoisting adalah mekanisme di JavaScript di mana deklarasi variabel dan fungsi “diangkat” ke atas scope sebelum kode dijalankan.</h2>
+
+    <h3>1. var — di-hoist + di-inisialisasi (undefined)</h3>
+    <pre style="background: black; color: white;">
+      <code>
+        console.log(a); // undefined
+        var a = 10;
+      </code>
+    </pre>
+
+    <h3>2. let dan const — di-hoist tapi masuk "Temporal Dead Zone" (TDZ)</h3>
+    <pre style="background: black; color: white;">
+      <code>
+        console.log(b);  // ❌ ReferenceError
+        let b = 10;
+      </code>
+    </pre>
+
+    <h3>3. Function Declaration di-hoist dengan utuh</h3>
+    <pre style="background: black; color: white;">
+      <code>
+        sayHello(); // Output: Hello!
+
+        function sayHello() {
+            console.log("Hello!");
+        }
+      </code>
+    </pre>
+
+    <h3>4. Function Expression TIDAK di-hoist</h3>
+    <pre style="background: black; color: white;">
+      <code>
+        sayHi(); // ❌ TypeError: sayHi is not a function
+
+        var sayHi = function() {
+            console.log("Hi!");
+        };
+      </code>
+    </pre>
+
+    <h3>5. Hoisting dengan let dalam block scope</h3>
+    <pre style="background: black; color: white;">
+      <code>
+        {
+            console.log(e);  // ❌ ReferenceError (TDZ)
+            let e = 50;
+        }
+      </code>
+    </pre>
+
+    <h3>6. Hoisting pada class</h3>
+    <pre style="background: black; color: white;">
+      <code>
+        const user = new Person(); // ❌ ReferenceError: Cannot access 'Person' before initialization
+
+        class Person {
+            constructor() {
+                this.name = "John";
+            }
+        }
+      </code>
+    </pre>
+
+    <h3>7. Hoisting pada multiple var declarations</h3>
+    <pre style="background: black; color: white;">
+      <code>
+        console.log(g); // undefined
+
+        var g = 1;
+        var g = 2;
+
+        console.log(g); // 2
+      </code>
+    </pre>
+
+    <h3>8. Hoisting dalam function scope</h3>
+    <pre style="background: black; color: white;">
+      <code>
+        function test() {
+            console.log(a); // undefined
+            var a = 100;
+        }
+        test();
+      </code>
+    </pre>
+
+    <h3>9. TDZ example yang lebih kompleks</h3>
+    <pre style="background: black; color: white;">
+      <code>
+        let a = 10;
+
+        function demo() {
+            console.log(a); // ❌ ReferenceError (karena ada "let a" di scope ini)
+            let a = 20;
+        }
+
+        demo();
+      </code>
+    </pre>
+
+<!-- File dipisah karena jika dalam 1 file ada error: ReferenceError
+    fungsi berikutnya tidak jalan-->
+    <script src="example-1.js"></script>
+    <script src="example-2.js"></script>
+    <script src="example-3.js"></script>
+    <script src="example-4.js"></script>
+    <script src="example-5.js"></script>
+    <script src="example-6.js"></script>
+    <script src="example-7.js"></script>
+    <script src="example-8.js"></script>
+    <script src="example-9.js"></script>
+</body>
+</html>
