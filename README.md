@@ -1,4 +1,4 @@
-# pre-interview-html-ts
+# pre-interview-html-js
 Preperation for Javascript🎓
 
 ### Fundamental
