@@ -25,3 +25,4 @@ Preperation for Javascript🎓
 ### Bonus
 16. Problem Solving Unique and Duplicate Array
 17. OOP (inheritance, Encapsulation, Polymorpishm and Abstraction)
+18. Cookies vs LocalStorage vs SessionStorage
