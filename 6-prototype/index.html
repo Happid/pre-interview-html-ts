@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prototype</title>
+</head>
+<body>
+<h2>Prototype</h2>
+
+<h3>1. Apa itu Prototype</h3>
+<p>Di JavaScript setiap object punya “prototype”, yaitu object lain yang menjadi fallback tempat mencari property jika property tersebut tidak ditemukan di object asli.</p>
+
+<h3>2. Prototype Chain & Inheritance</h3>
+<pre style="background: black; color: white;">
+        <code>
+            // EXAMPLE 1
+            const animal = {
+                eat() {
+                    console.log("eating...");
+                }
+            };
+
+            // Object.create() (Cara Membuat Inheritance)
+            const cat = Object.create(animal);
+            cat.meow = function() {
+                console.log("meow");
+            };
+
+            console.log("Example 1:");
+            cat.meow();  // meow
+            cat.eat();   // eating...
+
+
+            // EXAMPLE 2
+            const Person = {
+                greet() {
+                    console.log("Hello, " + this.name);
+                }
+            };
+            const happid = Object.create(Person);
+            happid.name = "Happid";
+            console.log("Example 2:");
+            happid.greet(); // "Hello, Happid"
+        </code>
+    </pre>
+
+<h3>3. Class di JavaScript adalah "syntactic sugar"</h3>
+<pre style="background: black; color: white;">
+    <code>
+        // Example 1: Menggunakan class
+        class Car {
+            constructor(brand) {
+                this.brand = brand;
+            }
+
+            sayHi() {
+                console.log("Hi, " + this.brand);
+            }
+        }
+
+
+        // Example 2: Syntactic sugar (versi asli)
+        // function Car(brand) {
+        //     this.brand = brand;
+        // }
+        // Car.prototype.sayHi = function() {
+        //     console.log("Hi, " + this.brand);
+        // };
+
+        // Hasilnya 100% sama.
+        console.log(Car.prototype);
+    </code>
+</pre>
+
+<script src="2-prototype-chain.js"></script>
+<script src="3-syntatic-sugar.js"></script>
+</body>
+</html>
