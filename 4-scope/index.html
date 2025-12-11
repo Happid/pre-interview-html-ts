@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>4. Scope</title>
+</head>
+<body>
+
+<h3>Scope menentukan di bagian mana variabel bisa diakses</h3>
+
+<h5>1. GLOBAL SCOPE</h5>
+<pre style="background: black; color: white;">
+    <code>
+        let x = 10; // global scope
+
+        function printX() {
+            console.log("akses di dalam function => ", x); // bisa akses
+        }
+
+        printX();
+        console.log("akses di luar function => ", x); // bisa akses juga
+
+    </code>
+</pre>
+
+
+<h5>2. FUNCTION SCOPE</h5>
+<pre style="background: black; color: white;">
+    <code>
+        function foo() {
+          let y = 20; // function scope
+          console.log("akses di dalam function => ",y);
+        }
+
+        foo();
+        console.log(y); // ❌ Error: y is not defined
+    </code>
+</pre>
+
+
+<h5>3. BLOCK SCOPE</h5>
+<pre style="background: black; color: white;">
+    <code>
+        {
+            var a = 50;
+            let z = 30;
+            const w = 40;
+            console.log(`akses di dalam block =>  a=${a}, z=${z}, w=${w}`);
+        }
+
+        console.log("akses di luar block =>",a); // bisa akses
+        console.log(z); // ❌ Error
+        console.log(w); // ❌ Error
+    </code>
+</pre>
+
+<h5>4. Lexical Environment</h5>
+<pre style="background: black; color: white;">
+    <code>
+        function outer() {
+          let x = 5;
+
+          function inner() {
+            console.log(x); // inner "ingat" lexical environment outer()
+          }
+
+          inner();
+        }
+
+        outer();
+    </code>
+</pre>
+
+<h5>5. Call Stack</h5>
+<pre style="background: black; color: white;">
+    <code>
+        function a() {
+          console.log("A");
+          b();
+        }
+
+        function b() {
+          console.log("B");
+          c();
+        }
+
+        function c() {
+          console.log("C");
+        }
+
+        a();
+    </code>
+</pre>
+
+<script src="./a-scope/global-scope.js"></script>
+<script src="./a-scope/function-scope.js"></script>
+<script src="./a-scope/block-scope.js"></script>
+<script src="./b-lexical-environment/lexical-environment.js"></script>
+<script src="./c-callstack/callstack.js"></script>
+</body>
+</html>
