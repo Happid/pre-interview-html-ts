@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Array Method</title>
+</head>
+<body>
+    <h3>Array Method</h3>
+
+    <h4>1. Map</h4>
+    <ul>
+        <li>membuat array baru tanpa mengubah array asli (immutable)</li>
+        <li>untuk transformasi array</li>
+    </ul>
+    <pre style="background: black; color: white">
+        <code>
+            const nums = [1, 2, 3];
+            const result = nums.map(n => n * 2);
+            console.log("map 1 => ", result); // [2, 4, 6]
+
+            const names = ["Happi", "Dani"];
+            const result1 = names.map(n => ({ name: n }));
+            console.log("map 2 => ",result1); // [ { name: "Happi" }, { name: "Dani" } ]
+        </code>
+    </pre>
+
+    <h4>2. forEach vs Map</h4>
+    <p>forEach tidak mengembalikan apa-apa (undefined), map mengembalikan array baru</p>
+    <pre style="background: black; color: white">
+        <code>
+            const myNumbers = [1, 2, 3];
+
+            // ***** forEach
+            const result3 = myNumbers.forEach(num => num * 2);
+            console.log("forEach tidak menghasilkan array baru => ",result3); // undefined
+
+            // ***** map
+            const result4 = myNumbers.map(num => num * 2);
+            console.log("map menghasilkan array baru => ",result4); // [2, 4, 6]
+        </code>
+    </pre>
+
+    <h4>3. Filter</h4>
+    <pre style="background: black; color: white">
+        <code>
+            // ***** filter 1
+            const myNumbs = [1, 2, 3, 4, 5, 6];
+            const evens = myNumbs.filter(n => n % 2 === 0);
+            console.log(evens); // [2, 4, 6]
+
+            // ***** filter 2
+            const users = [
+                { name: "Happi", active: true },
+                { name: "Ilmi", active: false }
+            ];
+            const activeUsers = users.filter(u => u.active);
+            console.log(activeUsers); // [ { name: "Happi", active: true } ]
+        </code>
+    </pre>
+
+    <h4>4. Reduce</h4>
+    <pre style="background: #f2f0f0;">
+        <code>
+           array.reduce((accumulator, currentValue) => {
+                // proses
+            }, initialValue);
+
+            Penjelasan:
+            - accumulator → tempat menyimpan hasil sebelumnya
+            - currentValue → elemen array yang sedang diproses
+            - initialValue → nilai awal accumulator (jika tidak memberi initialValue,
+            acc akan mulai dari elemen pertama)
+        </code>
+    </pre>
+
+    <pre style="background: black; color: white">
+        <code>
+            // ***** reduce 1
+            const myNmbs = [1, 2, 3, 4];
+            const total = myNmbs.reduce((acc, curr) => {
+                return acc + curr;
+            }, 0);
+            console.log("Example 1 =>", total); // 0+1+2+3+4 = 10
+
+
+            // ***** reduce 2
+            const words = ["saya", "sedang", "belajar", "JS"];
+            // Karena kita tidak memberi initialValue, acc akan mulai dari elemen pertama.
+            const sentence = words.reduce((acc, curr) => acc + " " + curr);
+            console.log("Example 2 =>", sentence); // "saya sedang belajar JS"
+
+
+            // ***** reduce 3
+            const myNmbs1 = [10, 5, 8, 20, 3];
+            const max = myNmbs1.reduce((acc, curr) => {
+                return curr > acc ? curr : acc;
+            }, 0);
+            console.log("Example 3 =>", max); // 20
+
+
+            // ***** reduce 4
+            const myNmbs2 = [1, 2, 3, 4, 5];
+            const newArr = myNmbs2.reduce((acc, curr) => {
+                if (curr % 2 === 0) acc.push(curr);
+                return acc;
+            }, []);
+            console.log("Example 4 =>", newArr); // [2, 4]
+
+
+            // ***** reduce 5
+            const letters = ["a", "b", "a", "c", "b", "a"];
+            const count = letters.reduce((acc, curr) => {
+                acc[curr] = (acc[curr] || 0) + 1;
+                return acc;
+            }, {});
+            console.log("Example 5 =>", count); // { a: 3, b: 2, c: 1 }
+
+        </code>
+    </pre>
+
+    <script src="1-map.js"></script>
+    <script src="2-foreach-vs-map.js"></script>
+    <script src="3-filter.js"></script>
+    <script src="4-reduce.js"></script>
+</body>
+</html>
