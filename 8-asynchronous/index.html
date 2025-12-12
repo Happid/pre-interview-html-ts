@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>8-Asynchronous</title>
+</head>
+<body>
+    <h3>Asynchronous</h3>
+    <h4>1. Callback</h4>
+    <pre style="background-color: black; color: white;">
+        <code>
+            function getData(myCallback) {
+                console.log("Mengambil data...");
+                setTimeout(() => {
+                    myCallback("Data sudah diterima!");
+                });
+            }
+
+            getData((result) => {
+                console.log(result);
+            });
+        </code>
+    </pre>
+
+    <h4>2. Promise</h4>
+    <pre style="background-color: black; color: white;">
+        <code>
+            function getData() {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve("Promise Data diterima!");
+                    });
+                });
+            }
+
+            getData().then(result => {
+                console.log(result);
+            });
+        </code>
+    </pre>
+
+    <h4>3. Async / Await</h4>
+    <pre style="background-color: black; color: white;">
+        <code>
+            function getData() {
+                return new Promise((resolve) => {
+                    setTimeout(() => resolve("Async Await Data masuk!"));
+                });
+            }
+
+            async function run() {
+                console.log("Menunggu data...");
+                const result = await getData();
+                console.log(result);
+            }
+
+            run();
+        </code>
+    </pre>
+
+    <h4>4. Microtask Queue vs Macrotask Queue</h4>
+    <pre style="background-color: black; color: white;">
+        <code>
+            console.log("Start");
+
+            setTimeout(() => {
+                console.log("Macrotask: Timeout");
+            }, 0);
+
+            Promise.resolve()
+                .then(() => console.log("Microtask 1"))
+                .then(() => console.log("Microtask 2"));
+
+            console.log("End");
+        </code>
+    </pre>
+
+    <script src="1-callback.js"></script>
+    <script src="2-promise.js"></script>
+    <script src="3-async-await.js"></script>
+    <script src="4-micro-macro-queque.js"></script>
+
+</body>
+</html>
