@@ -2,27 +2,18 @@
 Preperation for Javascript🎓
 
 ### Fundamental
-1. Hoisting 
-2. Closure 
-3. Scope
-4. This binding
-5. Prototype
+1. Problem Solving Unique and Duplicate Array
+2. Hoisting 
+3. Closure 
+4. Scope
+5. This binding
+6. Prototype
 
 ### Intermediate
-6. Array methods (map, filter, reduce)
-7. Promise + async/await
-8. Event loop
-9. Debounce & throttle
-10. Event delegation
-
-### Advance
-11. Currying
-12. Memoization
-13. Module system
-14. Design patterns (Observer, Singleton, Factory)
-15. Security (XSS, CSRF) – penting untuk frontend role
+7. Array methods (map, filter, reduce)
+8. Promise + async/await
 
 ### Bonus
-16. Problem Solving Unique and Duplicate Array
-17. OOP (inheritance, Encapsulation, Polymorpishm and Abstraction)
-18. Cookies vs LocalStorage vs SessionStorage
+9. OOP (inheritance, Encapsulation, Polymorpishm and Abstraction)
+- Cookies (token, durasi bisa diatur) vs LocalStorage (Permanen) vs SessionStorage (tidak permanen)
+- ES module (import, export) vs CommonJS (require, module.exports)
